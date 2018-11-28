@@ -1,0 +1,26 @@
+---
+version: '3.5'
+services:
+
+  desktop:
+    tty: 'true'
+    stdin_open: 'true'
+    ports:
+      - 3389
+      - 22
+    image: 'rattydave/docker-ubuntu-xrdp-mate-custom:18.04'
+    networks:
+      default:
+        aliases:
+          - sheetcam
+    deploy:
+      deploy:$
+        restart_policy:$
+          condition: on-failure$
+#    volumes
+#      - %LOCAL_PATH_TO_HOME_DIRECTORY%:/home
+#
+#    configs:
+#      - %LOCAL_PATH_TO_CREATEUSERS.TXT_FILE%:/root/createusers.txt
+
+# TODO: migrate https://github.com/BrowncoatShadow/compose-guacamole/blob/master/docker-compose.yml
